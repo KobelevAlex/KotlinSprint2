@@ -6,10 +6,12 @@ fun main() {
     val buff: Double = 20.0
     val numberOfPercent: Int = 100
 
-    println("""
+    println(
+        """
         У вас сейчас в запасах:
-         - кристаллической руды $crystalOre ед., ещё бонусом + $buff% - ${(crystalOre * buff/numberOfPercent).toInt()} ед.
-         - железной руды $ironOre ед, ещё бонусом + $buff% - ${(ironOre * buff/numberOfPercent).toInt()} ед.
+         - кристаллической руды $crystalOre ед., ещё бонусом + $buff% - ${(crystalOre * buff / numberOfPercent).toInt()} ед.
+         - железной руды $ironOre ед, ещё бонусом + $buff% - ${(ironOre * buff / numberOfPercent).toInt()} ед.
                  
-    """.trimIndent())
+    """.trimIndent()
+    )
 }
