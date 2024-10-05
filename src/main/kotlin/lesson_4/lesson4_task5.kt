@@ -1,18 +1,24 @@
 package lesson_4
 
 fun main() {
+    val NUMBER_OF_CREW_MIN = 55
+    val NUMBER_OF_CREW_MAX = 70
+    val NUMBER_OF_FOOD_CRATES_MIN = 50
+    val weatherIsGood = true
+    val thereIsDamage = true
+    val thereIsNoDamage = false
+
     println("Есть ли повреждения корпуса?  Укажите - true или false!")
-    val damageToTheHousing: Boolean = readLine()?.toBoolean() ?: false
+    val damageToTheHousing: Boolean = readln().toBoolean()
 
     println("Введите Количество экипажа:")
-    val numberOfCrew: Int = readLine()?.toInt() ?: 0
+    val numberOfCrew: Int = readln().toInt()
 
     println("Введите количество ящиков с провизией на борту:")
-    val numberOfFoodCrates: Int = readLine()?.toInt() ?: 0
+    val numberOfFoodCrates: Int = readln().toInt()
 
     println("Благоприятность метеоусловий?  Укажите - true или false!")
-    val favorableWeatherConditions: Boolean = readLine()?.toBoolean() ?: false
-
+    val favorableWeatherConditions: Boolean = readln().toBoolean()
 
     println("Текущий состав экипажа: $numberOfCrew")
     println("Наличие повреждений корпуса: $damageToTheHousing")
@@ -21,14 +27,14 @@ fun main() {
     println(
         "Может ли корабль отправиться в плавание: " +
                 "${
-                    ((damageToTheHousing == false) &&
-                            (numberOfCrew >= 55 && numberOfCrew <= 70) &&
-                            (numberOfFoodCrates > 50) &&
-                            (favorableWeatherConditions == true)) ||
-                            ((numberOfCrew == 70) &&
-                                    (favorableWeatherConditions == true) &&
-                                    (numberOfFoodCrates >= 50) &&
-                                    (damageToTheHousing == true))
+                    ((damageToTheHousing == thereIsNoDamage) &&
+                            (numberOfCrew >= NUMBER_OF_CREW_MIN && numberOfCrew <= NUMBER_OF_CREW_MAX) &&
+                            (numberOfFoodCrates > NUMBER_OF_FOOD_CRATES_MIN) &&
+                            (favorableWeatherConditions == weatherIsGood)) ||
+                            ((numberOfCrew == NUMBER_OF_CREW_MAX) &&
+                                    (favorableWeatherConditions == weatherIsGood) &&
+                                    (numberOfFoodCrates >= NUMBER_OF_FOOD_CRATES_MIN) &&
+                                    (damageToTheHousing == thereIsDamage))
                 }"
     )
 
