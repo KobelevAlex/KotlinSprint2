@@ -16,12 +16,15 @@ fun main() {
 
     println("Ваши числа: $userFirstNumber и $userSecondNumber")
     println("Были загаданы - $firstNumber и $secondNumber")
-    if ((userFirstNumber == firstNumber && userSecondNumber == secondNumber) || (userFirstNumber == secondNumber && userSecondNumber == firstNumber)) {
+    if ((userFirstNumber == firstNumber && userSecondNumber == secondNumber) ||
+        (userFirstNumber == secondNumber && userSecondNumber == firstNumber)
+    ) {
         println("Поздравляем! Вы выиграли главный приз!")
-    } else if ((userFirstNumber == firstNumber && userSecondNumber != secondNumber) || (userFirstNumber != firstNumber && userSecondNumber == secondNumber) ||
-        (userFirstNumber == secondNumber && userSecondNumber != firstNumber) || (userFirstNumber != secondNumber && userSecondNumber == firstNumber)
+    } else if ((userFirstNumber == firstNumber && userSecondNumber != secondNumber) ||
+        (userFirstNumber != firstNumber && userSecondNumber == secondNumber) ||
+        (userFirstNumber == secondNumber && userSecondNumber != firstNumber) ||
+        (userFirstNumber != secondNumber && userSecondNumber == firstNumber)
     ) {
         println("Вы угадали одно число и выиграли утешительный приз!")
-
     } else println("Неудача!")
 }
