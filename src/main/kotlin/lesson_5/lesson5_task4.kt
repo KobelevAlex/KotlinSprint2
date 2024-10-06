@@ -3,7 +3,6 @@ package lesson_5
 fun main() {
     val userBaza = "Zaphod"
     val passwordBaza = "PanGalactic"
-    val checkUser: Boolean
 
     println(
         """
@@ -16,12 +15,10 @@ fun main() {
     )
     val user: String = readln()
 
-    checkUser = user == userBaza
-    if (checkUser == true) {
+    if (user == userBaza) {
         println("Введите пароль:")
         val password: String = readln()
-        val checkPassword = password == passwordBaza
-        if (checkPassword == true) {
+        if (password == passwordBaza) {
             println(
                 """
                 [вздыхает...] Ваши данные проверены, и о, чудо, они верны... 
