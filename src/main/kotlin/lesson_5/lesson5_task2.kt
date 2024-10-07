@@ -1,8 +1,8 @@
 package lesson_5
 
+const val AGE_OF_MAJORITY = 18
 fun main() {
     val userAge: Int
-    val AGE_OF_MAJORITY = 18
     val currentYear = 2024
 
     println("Введите ваш год рождения (например: 2002)")
