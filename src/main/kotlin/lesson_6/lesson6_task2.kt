@@ -1,15 +1,15 @@
 package lesson_6
 
+const val MILLI_SECONDS_IN_SECOND = 1000
 fun main() {
+    val numberSeconds: Int
+    val numberInMilliSeconds: Long
 
     println("Введите количество секунд, которые нужно засечь:")
-    var numberSeconds = readln().toInt()
 
-    for (i in numberSeconds downTo 1) {
-
-        println("Осталось - $i сек.")
-        Thread.sleep(1000)
-    }
+    numberSeconds = readln().toInt()
+    numberInMilliSeconds = (MILLI_SECONDS_IN_SECOND * numberSeconds).toLong()
+    Thread.sleep(numberInMilliSeconds)
     println("Прошло $numberSeconds секунд.")
 
 }
