@@ -13,9 +13,9 @@ fun main() {
             randomPasswordForUser.add(digits.random())
         } else randomPasswordForUser.add(letters.random())
     }
+    val passwordUser = randomPasswordForUser.joinToString("")
     println(
-        "Ваш новый пароль: ${randomPasswordForUser[0]}${randomPasswordForUser[1]}${randomPasswordForUser[2]}${randomPasswordForUser[3]}" +
-                "${randomPasswordForUser[4]}${randomPasswordForUser[5]}"
+        "Ваш новый пароль: $passwordUser"
     )
 
 }
