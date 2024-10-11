@@ -6,8 +6,8 @@ fun main() {
 
     val interNumberUser = readln().toInt()
 
-    for (i in 0 until interNumberUser) {
-        if (i % 2 == 0) println(i)
+    for (i in 0 until interNumberUser step 2) {
+        println(i)
     }
 
 
