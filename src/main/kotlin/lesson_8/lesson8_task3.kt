@@ -2,7 +2,7 @@ package lesson_8
 
 fun main() {
 
-    val listOfIngredientsАorСharlotte = arrayListOf("яйцо", "мука", "сода", "сахар", "молоко", "яблоки")
+    val listOfIngredientsАorСharlotte = arrayOf("яйцо", "мука", "сода", "сахар", "молоко", "яблоки")
 
     println("Напишите название ингредиента:")
 
