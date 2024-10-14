@@ -7,9 +7,8 @@ fun main() {
     println("Напишите название ингредиента:")
 
     val userInterIngredient = readln()
-    val ingredientTrueOrFalse = listOfIngredientsАorСharlotte.contains(userInterIngredient)
 
-    if (ingredientTrueOrFalse == true) println("Ингредиент \"$userInterIngredient\" в рецепте есть")
+    if (userInterIngredient in listOfIngredientsАorСharlotte) println("Ингредиент \"$userInterIngredient\" в рецепте есть")
     else println("Такого ингредиента в рецепте нет")
 
 
