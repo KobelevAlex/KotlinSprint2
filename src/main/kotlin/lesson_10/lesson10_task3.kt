@@ -3,6 +3,8 @@ package lesson_10
 import kotlin.random.Random
 
 fun main() {
+    val minValue = 0.466
+    val maxValue = 0.895
     val charRangeSpecialCharacters = '!'..'/'
     val numberRange = '0'..'9'
     var userPassword: String
@@ -14,9 +16,9 @@ fun main() {
         for (i in 1..value) {
             val random = Math.random()
             println(random)
-            if (random <= 0.466) {
+            if (random <= minValue) {
                 listOfRandomCharacters.add(charRangeSpecialCharacters.random())
-            } else if ((random > 0.466) && (random <= 0.895)) {
+            } else if ((random > minValue) && (random <= maxValue)) {
                 listOfRandomCharacters.add(numberRange.random())
             } else listOfRandomCharacters.add(' ')
         }
