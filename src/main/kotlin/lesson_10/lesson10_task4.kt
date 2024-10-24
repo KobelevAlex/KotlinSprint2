@@ -1,6 +1,7 @@
 package lesson_10
 
 fun printInfo(FirstBone: Int, SecondBone: Int, sumBones: Int) {
+
     println(
         """
                 Число на первой кости - $FirstBone
@@ -35,6 +36,29 @@ fun сhooseTheFirstOne(minValue: Double, maxValue: Double, carRunningText: Strin
     return value
 }
 
+fun throwingBone(): Int {
+    val range = 1..<7
+    return range.random()
+}
+
+fun addInListManWalks(manWalksText: String, listManWalks: MutableList<Int>) {
+    val valueFirstBone = throwingBone()
+    val valueSecondBone = throwingBone()
+    val sumNumbersBones = valueFirstBone + valueSecondBone
+    listManWalks.add(sumNumbersBones)
+    println(manWalksText)
+    printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
+}
+
+fun addInListCarRunning(carRunningText: String, listCarRunning: MutableList<Int>) {
+    val valueFirstBone = throwingBone()
+    val valueSecondBone = throwingBone()
+    val sumNumbersBones = valueFirstBone + valueSecondBone
+    listCarRunning.add(sumNumbersBones)
+    println(carRunningText)
+    printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
+}
+
 fun main() {
 
     val minValue = 0.3
@@ -45,14 +69,6 @@ fun main() {
     val carRunningText = "Кости бросает машина."
     val listCarRunning: MutableList<Int> = mutableListOf()
     var numberOfGames = 0
-    var valueFirstBone: Int
-    var valueSecondBone: Int
-    var sumNumbersBones: Int
-
-    fun throwingBone(): Int {
-        val range = 1..<7
-        return range.random()
-    }
 
     println("Хотите бросить кости? Введите: Да или Нет")
 
@@ -69,47 +85,22 @@ fun main() {
         println()
 
         if (first == manWalksText) {
-            println(manWalksText)
-            valueFirstBone = throwingBone()
-            valueSecondBone = throwingBone()
-            sumNumbersBones = valueFirstBone + valueSecondBone
-            listManWalks.add(sumNumbersBones)
 
-            printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
+            addInListManWalks(manWalksText, listManWalks)
 
             Thread.sleep(1000)
 
-            println(carRunningText)
-
-            valueFirstBone = throwingBone()
-            valueSecondBone = throwingBone()
-            sumNumbersBones = valueFirstBone + valueSecondBone
-            listCarRunning.add(sumNumbersBones)
-
-            printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
+            addInListCarRunning(carRunningText, listCarRunning)
 
             println(whoWon(numberOfGames, listCarRunning, listManWalks, listVictoryOfMan))
 
         } else {
-            println(carRunningText)
 
-            valueFirstBone = throwingBone()
-            valueSecondBone = throwingBone()
-            sumNumbersBones = valueFirstBone + valueSecondBone
-            listCarRunning.add(sumNumbersBones)
-
-            printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
+            addInListCarRunning(carRunningText, listCarRunning)
 
             Thread.sleep(2000)
 
-            println(manWalksText)
-
-            valueFirstBone = throwingBone()
-            valueSecondBone = throwingBone()
-            sumNumbersBones = valueFirstBone + valueSecondBone
-            listManWalks.add(sumNumbersBones)
-
-            printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
+            addInListManWalks(manWalksText, listManWalks)
 
             println(whoWon(numberOfGames, listCarRunning, listManWalks, listVictoryOfMan))
 
