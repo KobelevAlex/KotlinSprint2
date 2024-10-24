@@ -1,6 +1,5 @@
 package lesson_11
 
-import sun.net.www.protocol.mailto.MailToURLConnection
 
 class User(val id: Int, val userName: String, var userPassword: String, var userEMail: String) {
 
