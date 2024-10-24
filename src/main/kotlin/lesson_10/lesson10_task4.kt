@@ -1,6 +1,39 @@
 package lesson_10
 
-import kotlin.random.Random
+fun printInfo(FirstBone: Int, SecondBone: Int, sumBones: Int) {
+    println(
+        """
+                Число на первой кости - $FirstBone
+                Число на второй кости - $SecondBone
+                Сумма чисел на костях - $sumBones
+
+            """.trimIndent()
+    )
+}
+
+fun whoWon(
+    numberOfGames: Int,
+    listCarRunning: MutableList<Int>,
+    listManWalks: MutableList<Int>,
+    listVictoryOfMan: MutableList<Int>,
+): String {
+    val value: String
+    if (listCarRunning[numberOfGames] > listManWalks[numberOfGames]) {
+        value = "Победила машина!"
+    } else if (listCarRunning[numberOfGames] < listManWalks[numberOfGames]) {
+        listVictoryOfMan.add(1)
+        value = "Победило человечество!"
+    } else value = "Ничья!"
+    return value
+}
+
+fun сhooseTheFirstOne(minValue: Double, maxValue: Double, carRunningText: String, manWalksText: String): String {
+    val value: String
+    val randomNumber = Math.random()
+    if (randomNumber <= minValue || randomNumber > maxValue) value = carRunningText
+    else value = manWalksText
+    return value
+}
 
 fun main() {
 
@@ -17,26 +50,8 @@ fun main() {
     var sumNumbersBones: Int
 
     fun throwingBone(): Int {
-        return Random.nextInt(1, 7)
-    }
-
-    fun whoWon(numberCycle: Int): String {
-        val value: String
-        if (listCarRunning[numberCycle] > listManWalks[numberCycle]) {
-            value = "Победила машина!"
-        } else if (listCarRunning[numberCycle] < listManWalks[numberCycle]) {
-            listVictoryOfMan.add(1)
-            value = "Победило человечество!"
-        } else value = "Ничья!"
-        return value
-    }
-
-    fun сhooseTheFirstOne(): String {
-        val value: String
-        val randomNumber = Math.random()
-        if (randomNumber <= minValue || randomNumber > maxValue) value = carRunningText
-        else value = manWalksText
-        return value
+        val range = 1..<7
+        return range.random()
     }
 
     println("Хотите бросить кости? Введите: Да или Нет")
@@ -49,7 +64,7 @@ fun main() {
     }
 
     do {
-        val first = сhooseTheFirstOne()
+        val first = сhooseTheFirstOne(minValue, maxValue, carRunningText, manWalksText)
         println("Начнём ${numberOfGames + 1} игру!")
         println()
 
@@ -73,7 +88,7 @@ fun main() {
 
             printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
 
-            println(whoWon(numberOfGames))
+            println(whoWon(numberOfGames, listCarRunning, listManWalks, listVictoryOfMan))
 
         } else {
             println(carRunningText)
@@ -96,7 +111,7 @@ fun main() {
 
             printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
 
-            println(whoWon(numberOfGames))
+            println(whoWon(numberOfGames, listCarRunning, listManWalks, listVictoryOfMan))
 
         }
         Thread.sleep(2000)
@@ -106,7 +121,6 @@ fun main() {
         println("Хотите бросить кости еще раз? Введите: Да или Нет")
         gameOver = readln()
     } while (gameOver == "Да")
-
 
     println(
         """   
@@ -119,13 +133,4 @@ fun main() {
 
 }
 
-fun printInfo(FirstBone: Int, SecondBone: Int, sumBones: Int) {
-    println(
-        """
-                Число на первой кости - $FirstBone
-                Число на второй кости - $SecondBone
-                Сумма чисел на костях - $sumBones
 
-            """.trimIndent()
-    )
-}
