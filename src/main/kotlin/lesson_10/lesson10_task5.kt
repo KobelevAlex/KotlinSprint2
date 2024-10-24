@@ -13,29 +13,27 @@ private fun generateToken(): String {
     return (1..32).map { characters.random() }.joinToString("")
 }
 
+fun authorize(username: String, password: String): String? {
+    return if (username == USERNAME && password == PASSWORD) {
+        generateToken()
+    } else {
+        null
+    }
+}
+
+fun getCart(token: String?): List<String>? {
+    return if (token != null) {
+        cart
+    } else {
+        null
+    }
+}
+
 fun main() {
-
-    fun getCart(token: String?): List<String>? {
-        return if (token != null) {
-            cart
-        } else {
-            null
-        }
-    }
-
-    fun authorize(username: String, password: String): String? {
-        return if (username == USERNAME && password == PASSWORD) {
-            generateToken()
-        } else {
-            null
-        }
-    }
-
     val username = "alex123"
     val password = "alex123"
     val token = authorize(username, password)
     val cartItems = getCart(token)
-
 
     if (cartItems != null) {
         println("Содержимое корзины: ${cartItems.joinToString()}")
