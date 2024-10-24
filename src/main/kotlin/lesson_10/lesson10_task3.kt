@@ -10,7 +10,6 @@ fun createPassword(
 
     for (i in 1..passwordLength) {
         val random = Math.random()
-        println(random)
         if (random <= minValue) {
             listOfRandomCharacters.add(charRangeSpecialCharacters.random())
         } else if ((random > minValue) && (random <= maxValue)) {
