@@ -1,11 +1,16 @@
 package lesson_11
 
-class User2(val id: Int, val userName: String, var userPassword: String, var userEMail: String, var bio: String) {
-
+class User2(
+    val id: Int,
+    val userName: String,
+    var userPassword: String,
+    var userEMail: String,
+    var bio: String = "Человек",
+) {
     fun printUserInfo() {
         println(
             """
-            
+                
             ${userName}, у вас следующие данные:
             ID - $id
             Имя - $userName
@@ -31,19 +36,14 @@ class User2(val id: Int, val userName: String, var userPassword: String, var use
             println("Для замены пароля, необходимо ввести старый пароль:")
             interPassword = readln()
         }
-
         println("Введите новый пароль:")
-
         userPassword = readln()
-
         println("Теперь ваш пароль - $userPassword")
     }
-
 }
 
 fun main() {
-    val user = User2(123456, "Alexandr", "qwerty", "alex@mail.ru", "Человек")
-
+    val user = User2(123456, "Alexandr", "qwerty", "alex@mail.ru")
     user.printUserInfo()
     user.changeBio()
     user.changePassword()
