@@ -1,22 +1,20 @@
 package lesson_11
 
-data class Participant(val nameParticipant: String, val profilePictureParticipant: String) {
-}
+data class Participant(
+    val nameParticipant: String,
+    val profilePictureParticipant: String,
+    var status: String = "",
+)
 
-class Rooms(
+class Room(
     val coverRoom: String,
     val nameRoom: String,
+    private val listOfParticipantsRoom: MutableList<Participant> = mutableListOf(),
 ) {
-    // список участников комнаты
-    private val listOfParticipantsRoom: MutableList<Participant> = mutableListOf()
-
-    //При долгом нажатии на аватар подсветится его никнейм.
     fun theAvatarIsPressed(participant: Participant) {
-        //логиа отслеживания долгого нажатия на аватарку
         println("Аватарка ${participant.profilePictureParticipant} подсвечена! Показан ник - ${participant.nameParticipant}")
     }
 
-    //– добавления участника (принимает объект участника и сохраняет в свойство комнаты);
     fun addParticipant(participant: Participant) {
         listOfParticipantsRoom.add(participant)
         println(
@@ -40,13 +38,24 @@ class Rooms(
         )
     }
 
-    //– обновления статуса (принимает имя пользователя и новый статус).
-    fun updateTheStatus(participant: Participant, status: String) {
-        //статусы участника: “разговаривает”, “микрофон выключен”, “пользователь заглушен”
+    fun updateTheStatus(participant: Participant) {
         if (participant in listOfParticipantsRoom) {
-            println("Участник под ником ${participant.nameParticipant}  сейчас имеет статус - $status")
-        } else println("Участника под ником ${participant.nameParticipant} - нет в этой комнате!")
+            val minValue = 30
+            val maxValue = 60
+            val range = 0..100
+            val randomValue = range.random()
+
+            when {
+                randomValue <= minValue -> participant.status = "разговаривает"
+                randomValue in (minValue + 1)..maxValue -> participant.status = "микрофон выключен"
+                else -> participant.status = "пользователь заглушен"
+            }
+            println("Участник под ником ${participant.nameParticipant} сейчас имеет статус - ${participant.status}")
+        } else {
+            println("Участника под ником ${participant.nameParticipant} - нет в этой комнате!")
+        }
     }
+
 
     fun displayParticipants() {
         if (listOfParticipantsRoom.isEmpty()) {
@@ -66,7 +75,7 @@ fun main() {
     val participant2 = Participant("Алиса", "Ромашка")
     val participant3 = Participant("Кирилл", "Мотоцикл")
     val participant4 = Participant("Марина", "Кошечка")
-    val room1 = Rooms("cover_0000.jpg", "Космический зал автостопщиков по Галактикам")
+    val room1 = Room("cover_0000.jpg", "Космический зал автостопщиков по Галактикам")
     room1.greeting()
     room1.displayParticipants()
     room1.addParticipant(participant1)
@@ -79,9 +88,9 @@ fun main() {
     room1.displayParticipants()
     room1.theAvatarIsPressed(participant2)
     room1.theAvatarIsPressed(participant4)
-    room1.updateTheStatus(participant4, "разговаривает")
-    room1.updateTheStatus(participant1, "разговаривает")
-    room1.updateTheStatus(participant2, "отключен микрофон")
-    room1.updateTheStatus(participant3, "пользователь заглушен")
+    room1.updateTheStatus(participant4)
+    room1.updateTheStatus(participant1)
+    room1.updateTheStatus(participant2)
+    room1.updateTheStatus(participant3)
 
 }
