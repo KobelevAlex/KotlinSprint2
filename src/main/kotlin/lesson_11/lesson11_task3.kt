@@ -3,7 +3,7 @@ package lesson_11
 data class Participant(
     val nameParticipant: String,
     val profilePictureParticipant: String,
-    var status: String = "",
+    var status: String = "молчит",
 )
 
 class Room(
@@ -38,24 +38,15 @@ class Room(
         )
     }
 
-    fun updateTheStatus(participant: Participant) {
-        if (participant in listOfParticipantsRoom) {
-            val minValue = 30
-            val maxValue = 60
-            val range = 0..100
-            val randomValue = range.random()
-
-            when {
-                randomValue <= minValue -> participant.status = "разговаривает"
-                randomValue in (minValue + 1)..maxValue -> participant.status = "микрофон выключен"
-                else -> participant.status = "пользователь заглушен"
-            }
-            println("Участник под ником ${participant.nameParticipant} сейчас имеет статус - ${participant.status}")
+    fun updateTheStatus(nameParticipant: String, newstatus: String) {
+        val participant = listOfParticipantsRoom.find { it.nameParticipant == nameParticipant }
+        if (participant != null) {
+            participant.status = newstatus
+            println("Участник под ником ${nameParticipant} сейчас имеет статус - $newstatus")
         } else {
-            println("Участника под ником ${participant.nameParticipant} - нет в этой комнате!")
+            println("Участник с ником $nameParticipant не найден в комнате!")
         }
     }
-
 
     fun displayParticipants() {
         if (listOfParticipantsRoom.isEmpty()) {
@@ -64,6 +55,7 @@ class Room(
             println("Участники в комнате:")
             listOfParticipantsRoom.forEach { participant ->
                 println("Аватарка: ${participant.profilePictureParticipant}")
+                println("Статус: ${participant.status}")
             }
         }
 
@@ -88,9 +80,9 @@ fun main() {
     room1.displayParticipants()
     room1.theAvatarIsPressed(participant2)
     room1.theAvatarIsPressed(participant4)
-    room1.updateTheStatus(participant4)
-    room1.updateTheStatus(participant1)
-    room1.updateTheStatus(participant2)
-    room1.updateTheStatus(participant3)
-
+    room1.updateTheStatus(participant1.nameParticipant, "разговаривает")
+    room1.updateTheStatus(participant2.nameParticipant, "микрофон выключен")
+    room1.updateTheStatus(participant3.nameParticipant, "пользователь заглушен")
+    room1.updateTheStatus(participant4.nameParticipant, "разговаривает")
+    room1.displayParticipants()
 }
