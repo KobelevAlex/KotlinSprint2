@@ -68,5 +68,7 @@ fun main() {
     forum.printThread()
     forum.createNewMessage(user1.userId)
     forum.createNewMessage(user2.userId)
+    forum.createNewMessage(user1.userId)
+    forum.createNewMessage(user2.userId)
     forum.printThread()
 }
