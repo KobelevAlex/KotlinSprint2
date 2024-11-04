@@ -5,19 +5,13 @@ class ForumMessage(val authorId: String, val message: String)
 class Forum() {
     val listMessages: MutableList<ForumMessage> = mutableListOf()
     val listOfForumUsers: MutableList<MemberOfTheForum> = mutableListOf()
+    val startuserId = 99999
+    val listId: MutableList<Int> = mutableListOf(startuserId)
     private fun generateUniqueId(): String {
-        val lengthId = 6
-        val listId: MutableList<Int> = mutableListOf()
-        val rangeNumbers = 0..9
-        var userId: String
-        do {
-            for (i in 1..lengthId) {
-                val randomNumber = rangeNumbers.random()
-                listId.add(randomNumber)
-            }
-            userId = listId.joinToString("")
-        } while (listOfForumUsers.any { it.userId == userId })
-        return userId
+        var userId = listId.last()
+        userId++
+        listId.add(userId)
+        return userId.toString()
     }
 
     fun createNewUser(userName: String): MemberOfTheForum {
