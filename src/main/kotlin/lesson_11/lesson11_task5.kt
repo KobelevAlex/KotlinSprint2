@@ -3,10 +3,10 @@ package lesson_11
 class MemberOfTheForum(var userId: String, val userName: String)
 class ForumMessage(val authorId: String, val message: String)
 class Forum() {
-    val listMessages: MutableList<ForumMessage> = mutableListOf()
-    val listOfForumUsers: MutableList<MemberOfTheForum> = mutableListOf()
-    val startuserId = 99999
-    val listId: MutableList<Int> = mutableListOf(startuserId)
+    private val listMessages: MutableList<ForumMessage> = mutableListOf()
+    private val listOfForumUsers: MutableList<MemberOfTheForum> = mutableListOf()
+    private val initialUserId = 99999
+    private val listId: MutableList<Int> = mutableListOf(initialUserId)
     private fun generateUniqueId(): String {
         var userId = listId.last()
         userId++
