@@ -1,6 +1,7 @@
 package lesson_10
 
-import kotlin.random.Random
+
+
 
 fun main() {
 
@@ -9,28 +10,33 @@ fun main() {
     val carRunningText = "Кости бросает машина."
     val listCarRunning: MutableList<Int> = mutableListOf()
     val numberOfGames = 6
+    val minValue = 0.3
+    val maxValue =0.6
     var valueFirstBone: Int
     var valueSecondBone: Int
     var sumNumbersBones: Int
 
     fun throwingBone(): Int {
-        return Random.nextInt(1, 7)
+       val range = 1..<7
+        return range.random()
     }
 
     fun whoWon(numberCycle: Int): String {
-        var value: String
+        val value: String
         if (listCarRunning[numberCycle] > listManWalks[numberCycle]) {
             value = "Победила машина!"
-        } else if (listCarRunning[numberCycle] < listManWalks[numberCycle]) {
+        }
+        else if (listCarRunning[numberCycle] < listManWalks[numberCycle]) {
             value = "Победило человечество!"
-        } else value = "Ничья!"
+        }
+        else value = "Ничья!"
         return value
     }
 
     fun сhooseTheFirstOne(): String {
         val value: String
         val randomNumber = Math.random()
-        if (randomNumber <= 0.3 || randomNumber > 0.6) value = carRunningText
+        if (randomNumber <= minValue || randomNumber > maxValue) value = carRunningText
         else value = manWalksText
         return value
     }
@@ -47,7 +53,7 @@ fun main() {
             sumNumbersBones = valueFirstBone + valueSecondBone
             listManWalks.add(sumNumbersBones)
 
-            printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
+            //printInfo (valueFirstBone, valueSecondBone, sumNumbersBones)
 
             Thread.sleep(1000)
 
@@ -58,7 +64,7 @@ fun main() {
             sumNumbersBones = valueFirstBone + valueSecondBone
             listCarRunning.add(sumNumbersBones)
 
-            printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
+            //printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
 
             whoWon(i - 1)
             println(whoWon(i - 1))
@@ -71,7 +77,7 @@ fun main() {
             sumNumbersBones = valueFirstBone + valueSecondBone
             listCarRunning.add(sumNumbersBones)
 
-            printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
+            //printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
 
             Thread.sleep(1000)
 
@@ -82,7 +88,7 @@ fun main() {
             sumNumbersBones = valueFirstBone + valueSecondBone
             listManWalks.add(sumNumbersBones)
 
-            printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
+           // printInfo(valueFirstBone, valueSecondBone, sumNumbersBones)
 
             println(whoWon(i - 1))
 
@@ -100,17 +106,16 @@ fun main() {
         Game over!!!
     """.trimIndent()
     )
-
-
-}
-
-fun printInfo(FirstBone: Int, SecondBone: Int, sumBones: Int) {
-    println(
-        """
-                Число на первой кости - $FirstBone
-                Число на второй кости - $SecondBone
-                Сумма чисел на костях - $sumBones
+    fun printInfo(valueFirstBone: Int, valueSecondBone: Int, sumNumbersBones: Int) {
+        println(
+            """
+                Число на первой кости - $valueFirstBone
+                Число на второй кости - $valueSecondBone
+                Сумма чисел на костях - $sumNumbersBones
 
             """.trimIndent()
-    )
+        )
+    }
+
 }
+
