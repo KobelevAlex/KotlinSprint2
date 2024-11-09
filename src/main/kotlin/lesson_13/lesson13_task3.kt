@@ -10,7 +10,7 @@ fun main() {
         InfoData3("Александр", 89373581835, "Магнит"),
         InfoData3("Александр", 89374781835, null)
     )
-    val listCompany = listContacts.filter { it.company != null }.map { it.company }
+    val listCompany = listContacts.mapNotNull { it.company }
     listCompany.forEach { company ->
         println(company)
     }
