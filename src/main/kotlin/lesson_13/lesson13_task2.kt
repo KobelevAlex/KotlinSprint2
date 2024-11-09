@@ -7,9 +7,6 @@ fun main() {
     println(
         "- Имя: ${person.name}\n" +
                 "- Номер: ${person.numberPhone}\n" +
-                "- Компания: ${
-                    if (person.company == null)
-                        "не указано" else person.company
-                }"
+                "- Компания: ${person.company ?: "не указано"}"
     )
 }
