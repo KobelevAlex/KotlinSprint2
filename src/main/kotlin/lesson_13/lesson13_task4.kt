@@ -5,20 +5,17 @@ class InfoData4(
     var numberPhone: Long?,
     var company: String?,
 ) {
-    fun printObjects() {
-        if (Companion.listOfObjects.isNotEmpty()) {
-            Companion.listOfObjects.forEach {
+    fun printObjects(listOfObjects:MutableList<InfoData4>) {
+        if (listOfObjects.isNotEmpty()) {
+            listOfObjects.forEach {
                 println("Имя: ${it.name}, тел.: ${it.numberPhone}, компания: ${it.company ?: "не указано."} ")
             }
         } else println("Пока нет записей!")
     }
-
-    companion object {
-        val listOfObjects: MutableList<InfoData4> = mutableListOf()
-    }
 }
 
 fun main() {
+    val listOfObjects: MutableList<InfoData4> = mutableListOf()
     while (true) {
         println("Введите Имя (или 'exit' для выхода):")
         val enterName = readln()
@@ -32,10 +29,9 @@ fun main() {
         println("Введите компанию:")
         val enterCompany = readln().takeIf { it.isNotBlank() }
         val contact = InfoData4(enterName, enterNumberPhone, enterCompany)
-        InfoData4.listOfObjects.add(contact)
-        contact.printObjects()
+        listOfObjects.add(contact)
+        contact.printObjects(listOfObjects)
     }
-
 }
 
 
