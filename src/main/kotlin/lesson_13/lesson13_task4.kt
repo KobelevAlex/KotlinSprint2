@@ -2,10 +2,11 @@ package lesson_13
 
 class InfoData4(
     val name: String,
-    var numberPhone: Long?,
+    var numberPhone: String,
     var company: String?,
 ) {
-    fun printObjects(listOfObjects:MutableList<InfoData4>) {
+    val listOfObjects: MutableList<InfoData4> = mutableListOf()
+    fun printObjects() {
         if (listOfObjects.isNotEmpty()) {
             listOfObjects.forEach {
                 println("Имя: ${it.name}, тел.: ${it.numberPhone}, компания: ${it.company ?: "не указано."} ")
@@ -15,7 +16,6 @@ class InfoData4(
 }
 
 fun main() {
-    val listOfObjects: MutableList<InfoData4> = mutableListOf()
     while (true) {
         println("Введите Имя (или 'exit' для выхода):")
         val enterName = readln()
@@ -28,9 +28,9 @@ fun main() {
         } while (enterNumberPhone == null)
         println("Введите компанию:")
         val enterCompany = readln().takeIf { it.isNotBlank() }
-        val contact = InfoData4(enterName, enterNumberPhone, enterCompany)
-        listOfObjects.add(contact)
-        contact.printObjects(listOfObjects)
+        val contact = InfoData4(enterName, enterNumberPhone.toString(), enterCompany)
+        contact.listOfObjects.add(contact)
+        contact.printObjects()
     }
 }
 
