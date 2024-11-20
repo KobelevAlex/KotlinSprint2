@@ -1,24 +1,49 @@
 package lesson_15
 
-interface Move {
-    fun methodsMovement()
+interface Swim {
+    fun swim()
 }
 
-class Duck(name: String) : Move {
-    override fun methodsMovement() {
-        println("Оталкивается лапками от воды.")
+interface Walk {
+    fun walk()
+}
+
+interface Fly {
+    fun fly()
+}
+
+class Duck(name: String) : Swim, Walk, Fly {
+    override fun walk() {
+        println("Утка ходит.")
+    }
+
+    override fun fly() {
+        println("Утка летает.")
+    }
+
+    override fun swim() {
+        println("Утка плавает.")
+    }
+
+}
+
+class CrucianCarp(name: String) : Swim {
+    override fun swim() {
+        println("Карась плавает.")
     }
 }
 
-class CrucianCarp(name: String) : Move {
-    override fun methodsMovement() {
-        println("Оталкивается плавниками и хвостом от воды.")
+class Seagull(name: String) : Swim, Fly, Walk {
+    override fun walk() {
+        println("Чайка ходит.")
     }
-}
 
-class Seagull(name: String) : Move {
-    override fun methodsMovement() {
-        println("Машет крыльями.")
+    override fun fly() {
+        println("Чайка летает.")
+    }
+
+    override fun swim() {
+        println("Чайка плавает.")
     }
 }
 
@@ -26,8 +51,11 @@ fun main() {
     val duck = Duck("Утка")
     val crucianCarp = CrucianCarp("Карась")
     val seagull = Seagull("Чайка")
-    duck.methodsMovement()
-    crucianCarp.methodsMovement()
-    seagull.methodsMovement()
-
+    duck.fly()
+    duck.swim()
+    duck.walk()
+    crucianCarp.swim()
+    seagull.fly()
+    seagull.swim()
+    seagull.walk()
 }
