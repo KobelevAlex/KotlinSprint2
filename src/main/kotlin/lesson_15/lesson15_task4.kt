@@ -1,20 +1,14 @@
 package lesson_15
 
 open class Product(val name: String, var quantity: Int)
+class Accessory(name: String, quantity: Int) : Product(name, quantity)
 class Instrument(name: String, quantity: Int) : Product(name, quantity) {
-    val accessories = mutableListOf<Accessory>()
+    private val accessories = mutableListOf<Accessory>()
     fun addAccessory(accessory: Accessory) {
         accessories.add(accessory)
     }
-}
 
-class Accessory(name: String, quantity: Int) : Product(name, quantity)
-interface AccessorySearch {
-    fun searchAccessories(instrument: Instrument)
-}
-
-class AccessorySearcher : AccessorySearch {
-    override fun searchAccessories(instrument: Instrument) {
+    fun searchAccessories(instrument: Instrument) {
         println("Выполняется поиск...")
         Thread.sleep(3000)
         if (instrument.accessories.isNotEmpty()) {
@@ -39,7 +33,6 @@ fun main() {
     val bow = Accessory("Смычок", 1)
     violin.addAccessory(stringSet2)
     violin.addAccessory(bow)
-    val searcher = AccessorySearcher()
-    searcher.searchAccessories(guitar)
-    searcher.searchAccessories(violin)
+    guitar.searchAccessories(guitar)
+    violin.searchAccessories(violin)
 }
