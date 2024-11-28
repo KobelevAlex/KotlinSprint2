@@ -1,14 +1,18 @@
 package lesson_15
 
 open class Product(val name: String, var quantity: Int)
+interface SearchAccessories {
+    fun searchAccessories(instrument: Instrument)
+}
+
 class Accessory(name: String, quantity: Int) : Product(name, quantity)
-class Instrument(name: String, quantity: Int) : Product(name, quantity) {
+class Instrument(name: String, quantity: Int) : Product(name, quantity), SearchAccessories {
     private val accessories = mutableListOf<Accessory>()
     fun addAccessory(accessory: Accessory) {
         accessories.add(accessory)
     }
 
-    fun searchAccessories(instrument: Instrument) {
+    override fun searchAccessories(instrument: Instrument) {
         println("Выполняется поиск...")
         Thread.sleep(3000)
         if (instrument.accessories.isNotEmpty()) {
