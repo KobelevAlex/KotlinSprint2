@@ -1,13 +1,18 @@
 package lesson_16
 
+fun Double.pow(exponent: Int): Double {
+    return Math.pow(this, exponent.toDouble())
+}
+
+private const val PI = 3.14
+
 class Circle(private val radius: Double) {
-    private val pi = 3.14
     fun circumferenceCircle(): Double {
-        return 2 * pi * radius
+        return 2 * PI * radius
     }
 
     fun areaCircle(): Double {
-        return pi * radius * radius
+        return PI * (radius.pow(2))
     }
 }
 
