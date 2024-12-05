@@ -1,14 +1,22 @@
 package lesson_16
 
-class Player(val name: String, private var health: Int, var impactForce: Int) {
+class Player(val name: String, private var health: Int, private var impactForce: Int) {
     fun takeHealth(): Int {
         return if (health > 0) {
-            val randomValue = (0..100).random()
+            val value1 = 20
+            val value2 = 21
+            val value3 = 60
+            val addHealth1 = 1
+            val addHealth2 = 5
+            val addHealth3 = 10
+            val addHealth4 = 0
+            val range = 0..100
+            val randomValue = range.random()
             val addHealth = when {
-                (randomValue <= 20) -> 1
-                (randomValue > 21) && (randomValue <= 40) -> 2
-                (randomValue >= 60) -> 3
-                else -> 0
+                (randomValue <= value1) -> addHealth1
+                (randomValue > value2) && (randomValue <= value3) -> addHealth2
+                (randomValue > value3) -> addHealth3
+                else -> addHealth4
             }
             health += addHealth
             println("Игрок '$name' получил лечение - ${addHealth} ед.")
@@ -16,28 +24,20 @@ class Player(val name: String, private var health: Int, var impactForce: Int) {
             return health
         } else {
             death()
-            0
+            health
         }
     }
 
-    fun takeDamage(): Int {
-        return if (health > 0) {
-            val randomValue = (0..100).random()
-            val damage = when {
-                (randomValue <= 20) -> 4
-                (randomValue > 21) && (randomValue <= 40) -> 5
-                (randomValue >= 60) -> 6
-                else -> 0
-            }
-            val takeDamage = impactForce + damage
-            health -= takeDamage
-            println("Игроку '$name' нанесли ущерб - $takeDamage ед.")
+    fun takeDamage(damage: Int): Int {
+        val takeDamage = impactForce + damage
+        health -= takeDamage
+        println("Игроку '$name' нанесли ущерб - $takeDamage ед.")
+        if (health > 0) {
             println("Текущий уровень здоровья - $health ед.")
-            health
-        } else {
+            return health
+        } else
             death()
-            0
-        }
+        return health
     }
 
     private fun death() {
@@ -50,11 +50,13 @@ class Player(val name: String, private var health: Int, var impactForce: Int) {
 }
 
 fun main() {
-    val player1 = Player("Антон", 10, 1)
-    player1.takeDamage()
+    val player1 = Player("Антон", 100, 10)
+    player1.takeDamage(20)
     player1.takeHealth()
-    player1.takeDamage()
+    player1.takeDamage(30)
     player1.takeHealth()
-    player1.takeDamage()
+    player1.takeDamage(50)
+    player1.takeHealth()
+    player1.takeHealth()
     player1.takeHealth()
 }
