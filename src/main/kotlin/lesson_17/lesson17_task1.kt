@@ -1,20 +1,23 @@
 package lesson_17
 
-class QuizItem(private var _question: String, private var _answer: String) {
-    val question: String
-        get() = _question
-    var answer: String
-        get() = _answer
+class QuizItem(
+    question: String,
+    answer: String
+) {
+    var question: String = question
+        private set
+
+    var answer: String = answer
         set(value) {
-            _answer = value
+            field = value
         }
 }
 
 fun main() {
-    val quizItem = QuizItem("Что такое арбуз", "Арбуз - это ягода!")
+    val quizItem = QuizItem("Что такое арбуз?", "Арбуз - это ягода!")
     println("Вопрос: ${quizItem.question}")
     println("Ответ: ${quizItem.answer}")
-    quizItem.answer = "Арбуз - очень вкусная ягода"
+    quizItem.answer = "Арбуз - очень большая и вкусная ягода!"
     println("Обновленный ответ: ${quizItem.answer}")
 }
 
