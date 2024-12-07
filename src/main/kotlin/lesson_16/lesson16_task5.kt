@@ -3,20 +3,20 @@ package lesson_16
 class Player(val name: String, private var health: Int, private var impactForce: Int) {
     fun takeHealth(): Int {
         return if (health > 0) {
-            val value1 = 20
-            val value2 = 21
-            val value3 = 60
-            val addHealth1 = 1
-            val addHealth2 = 5
-            val addHealth3 = 10
-            val addHealth4 = 0
+            val minimumSampleValue = 20
+            val averageSampleValue = 21
+            val maximumSampleValue = 60
+            val valueAddedHealth1 = 1
+            val valueAddedHealth2 = 5
+            val valueAddedHealth3 = 10
+            val valueAddedHealth4 = 0
             val range = 0..100
             val randomValue = range.random()
             val addHealth = when {
-                (randomValue <= value1) -> addHealth1
-                (randomValue > value2) && (randomValue <= value3) -> addHealth2
-                (randomValue > value3) -> addHealth3
-                else -> addHealth4
+                (randomValue <= minimumSampleValue) -> valueAddedHealth1
+                (randomValue > averageSampleValue) && (randomValue <= maximumSampleValue) -> valueAddedHealth2
+                (randomValue > maximumSampleValue) -> valueAddedHealth3
+                else -> valueAddedHealth4
             }
             health += addHealth
             println("Игрок '$name' получил лечение - ${addHealth} ед.")
@@ -51,7 +51,7 @@ class Player(val name: String, private var health: Int, private var impactForce:
 
 fun main() {
     val player1 = Player("Антон", 100, 10)
-    player1.takeDamage(20)
+    player1.takeDamage(100)
     player1.takeHealth()
     player1.takeDamage(30)
     player1.takeHealth()
