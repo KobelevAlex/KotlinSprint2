@@ -1,6 +1,7 @@
 package lesson_17
 
-class User(login: String, private var password: String) {
+class User(login: String,  password: String) {
+    private var _password = password
     var userLogin: String = login
         set(value) {
             val oldUserLogin = userLogin
@@ -8,7 +9,7 @@ class User(login: String, private var password: String) {
             println("Вы успешно сменили свой логин $oldUserLogin на $userLogin!")
         }
     var userPassword: String
-        get() = "*".repeat(password.length)
+        get() = "*".repeat(_password.length)
         set(value) = println("Вы не можете изменить пароль!")
 }
 
