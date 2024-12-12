@@ -4,16 +4,12 @@ class QuizItem(
     question: String,
     answer: String
 ) {
-   var _question = question
-    var _answer = answer
-    var question: String
-        get() = _question
-        set(value) {}
-
-    var answer: String
-        get()= _answer
-        set(value) {
-            _answer = value
+    var question: String = question
+        get() = field
+    var answer: String = answer
+        get() = field
+        set(value: String) {
+            field = value
         }
 }
 
