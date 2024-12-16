@@ -1,6 +1,6 @@
 package lesson_18
 
-class Order(val number: Int) {
+class Order(private val number: Int) {
     fun printInfoOrder(items: String) {
         println("Заказан товар №$number: $items")
     }
