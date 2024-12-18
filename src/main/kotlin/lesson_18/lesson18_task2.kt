@@ -1,30 +1,14 @@
 package lesson_18
 
-abstract class Dice {
-    abstract val numberOfFaces: Int
-    abstract fun throwBone()
-}
-
-class Dice4faces: Dice() {
-    override val numberOfFaces = 4
-    override fun throwBone() {
-        println("Бросок игральной костью с 4 гранями")
+open class Dice(private val numberOfFaces: Int) {
+    fun throwBone() {
+        println("Бросок игральной костью с $numberOfFaces гранями")
     }
 }
 
-class Dice6faces: Dice() {
-    override val numberOfFaces = 6
-    override fun throwBone() {
-        println("Бросок игральной костью с 6 гранями")
-    }
-}
-
-class Dice8faces: Dice() {
-    override val numberOfFaces = 8
-    override fun throwBone() {
-        println("Бросок игральной костью с 8 гранями")
-    }
-}
+class Dice4faces(numberOfFaces: Int = 4) : Dice(numberOfFaces)
+class Dice6faces(numberOfFaces: Int = 6) : Dice(numberOfFaces)
+class Dice8faces(numberOfFaces: Int = 8) : Dice(numberOfFaces)
 
 fun main() {
     val listOfObjects: MutableList<Dice> = mutableListOf()
