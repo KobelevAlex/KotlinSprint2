@@ -1,22 +1,26 @@
 package lesson_18
 
-abstract class Animal(name:String) {
+abstract class Animal(val name: String) {
+    fun sleep() {
+        println("$name - лёг спать!")
+    }
+
     abstract fun eat()
 }
 
-class Fox(val name:String): Animal(name) {
+class Fox(name: String) : Animal(name) {
     override fun eat() {
         println("$name - ест ягоды!")
     }
 }
 
-class Dog(val name: String): Animal(name) {
+class Dog(name: String) : Animal(name) {
     override fun eat() {
         println("$name - ест кости!")
     }
 }
 
-class Cat(val name: String): Animal(name) {
+class Cat(name: String) : Animal(name) {
     override fun eat() {
         println("$name - ест рыбу!!")
     }
@@ -32,5 +36,6 @@ fun main() {
     listOfObjects.add(cat)
     for (listItem in listOfObjects) {
         listItem.eat()
+        listItem.sleep()
     }
 }
