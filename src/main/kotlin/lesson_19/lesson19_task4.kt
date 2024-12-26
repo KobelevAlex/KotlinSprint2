@@ -8,16 +8,8 @@ enum class Patron(val namePatron: String, val impactForce: Int) {
 }
 
 class Tank(var typePatron: Patron = Patron.EMPTY) {
-    fun changePatronBlue() {
-        typePatron = Patron.BLUE
-    }
-
-    fun changePatronGreen() {
-        typePatron = Patron.GREEN
-    }
-
-    fun changePatronRed() {
-        typePatron = Patron.RED
+    fun changePatron(patron: Patron) {
+        typePatron = patron
     }
 
     fun shot(tank: Tank) {
@@ -30,10 +22,10 @@ class Tank(var typePatron: Patron = Patron.EMPTY) {
 
 fun main() {
     val tank = Tank()
-    tank.changePatronBlue()
+    tank.changePatron(Patron.RED)
     tank.shot(tank)
-    tank.changePatronRed()
+    tank.changePatron(Patron.GREEN)
     tank.shot(tank)
-    tank.changePatronGreen()
+    tank.changePatron(Patron.BLUE)
     tank.shot(tank)
 }
