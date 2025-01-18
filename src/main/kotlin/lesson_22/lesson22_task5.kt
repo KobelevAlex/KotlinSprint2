@@ -16,16 +16,9 @@ fun main() {
         "15:40",
         "10 св.лет",
     )
-    val (
-        namePlaceOrEvent,
-        descriptionPlaceOrEvent,
-        dateEvent,
-        timeEvent,
-        distancePlaceOrEventFromEarth,
-    ) = alphaCentauri
-    println("Название места - $namePlaceOrEvent")
-    println("Описание события - $descriptionPlaceOrEvent")
-    println("Дата события - $dateEvent")
-    println("Время события - $timeEvent")
-    println("Расстояние от Земли до Alpha Centauri - $distancePlaceOrEventFromEarth")
+    println("Название места - ${alphaCentauri.component1()}")
+    println("Описание события - ${alphaCentauri.component2()}")
+    println("Дата события - ${alphaCentauri.component3()}")
+    println("Время события - ${alphaCentauri.component4()}")
+    println("Расстояние от Земли до Alpha Centauri - ${alphaCentauri.component5()}")
 }
